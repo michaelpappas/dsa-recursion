@@ -1,13 +1,28 @@
 /** product: calculate the product of an array of numbers. */
 
 function product(nums) {
+  //base case -> nums.length == 0
+  //progress -> removing items from the front of the array
+  if (nums.length === 0) return 1;
+  return nums[0] * product(nums.slice(1));
+};
 
-}
 
 /** longest: return the length of the longest word in an array of words. */
-
+array = ["b"];
 function longest(words) {
-
+  //base case -> words.length ==0;
+  //progress -> removing items from front of words array;
+  if (words.length === 0) return 0;
+  let wordLength = words[0].length;
+  let currentLongest = longest(words.slice(1));
+  // if (longest(words.slice(1)) > wordLength) {
+  //   wordLength = longest(words.slice(1));
+  // }
+  if (wordLength < currentLongest) {
+    wordLength = currentLongest;
+  }
+  return wordLength;
 }
 
 /** everyOther: return a string with every other letter. */
