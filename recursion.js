@@ -27,25 +27,56 @@ function longest(words) {
 
 /** everyOther: return a string with every other letter. */
 
-function everyOther(str) {
+function everyOther(str, out = "", i = 0) {
+  //base case -> i equals string's length
+  //progress -> incrementing i by 1
+  if (str.length === i) return out;
 
+  if (i % 2 === 0) out += str[i];
+
+  return everyOther(str, out, i + 1);
 }
 
 /** find: return boolean depending on if val exists in array or not. */
 
 function find(arr, val) {
+  //base case -> arr.length === 0
+  //progress -> remove values at front of array
 
+  if (arr.length === 0) return false;
+
+  if (arr[0] === val) {
+    return true;
+  }
+
+  return find(arr.slice(1), val);
 }
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
-function isPalindrome(str) {
+function isPalindrome(str, palindrome=true) {
+  //base case -> str.length === 0
+  //progress -> remove letters at front and back of string
 
+  if(str.length === 0) return palindrome;
+
+  if(str[0] !== str[str.length - 1]) {
+    return false;
+  }
+  return isPalindrome(str.slice(1, -1));
 }
 
 /** revString: return a copy of a string, but in reverse. */
 
-function revString(str) {
+function revString(str, out="", i=str.length - 1) {
+  //base case -> i < 0
+  //progress ->  decrementing i by 1
+
+  if(i < 0) return out;
+
+  out+= str[i]
+
+  return revString(str, out, i - 1);
 
 }
 
